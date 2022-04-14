@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	 <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver"   value="com.mysql.cj.jdbc.Driver" />
+                <property name="url"      value="jdbc:mysql://localhost:3306/board?serverTimezone=UTC" />
+                <property name="username" value="root" />
+                <property name="password" value="1234" />
+            </dataSource>
+        </environment>
+    </environments>
+	
+	<!-- <typeAliases>
+		<typeAlias alias="Board" type="com.liz.vo.BoardVO"/>
+	</typeAliases> -->
+	
+	<!--  쿼리문이 들어가 있는 xml 파일 목록 -->
+	<mappers> 
+		<mapper resource="com/liz/config/boardMapper.xml" />
+	</mappers>
+	
+</configuration>
+
