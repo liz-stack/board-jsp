@@ -1,34 +1,120 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-#myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+
+/* 검색창 css(w3school) */
+* {
+  box-sizing: border-box;
 }
 
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* table css(w3school) */
 #myTable {
-  border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
+	border-collapse: collapse; /* Collapse borders */
+	width: 100%; /* Full-width */
+	border: 1px solid #ddd; /* Add a grey border */
+	font-size: 18px; /* Increase font-size */
 }
 
 #myTable th, #myTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
+	text-align: left; /* Left-align text */
+	padding: 12px; /* Add padding */
 }
 
 #myTable tr {
-  /* Add a bottom border to all table rows */
-  border-bottom: 1px solid #ddd;
+	/* Add a bottom border to all table rows */
+	border-bottom: 1px solid #ddd;
 }
 
 #myTable tr.header, #myTable tr:hover {
-  /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
+	/* Add a grey background color to the table header and on hover */
+	background-color: #f1f1f1;
+}
+
+/* #datePicker {
+	width: 35%;
+	float: left;
+}
+ */
+#searchForm {
+	width: 800px;
+	float: right;
+}
+
+/* category dropDown */
+
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropbtn_icon{
+  font-family : 'Material Icons';
+}
+.dropbtn{
+  border : 1px solid rgb(37, 37, 37);
+  border-radius : 4px;
+  background-color: #f5f5f5;
+  font-weight: 400;
+  color : rgb(37, 37, 37);
+  padding : 12px;
+  width :200px;
+  text-align: left;
+  cursor : pointer;
+  font-size : 12px;
+}
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #f9f9f9;
+  min-width : 200px;
+}
+
+.dropdown-content a{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
+}
+
+.dropdown-content a:hover{
+  background-color : #ececec
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

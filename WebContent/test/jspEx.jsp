@@ -8,6 +8,7 @@
 <title>jsp test</title>
 </head>
 <body>
+
 	<%-- 선언 태그 c.f. jsp주석태그는 컴파일 대상이 아님 --%>
 	<%!int num = 10;
 		String str = "jsp";
