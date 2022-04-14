@@ -10,7 +10,7 @@ import java.util.Date;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.liz.vo.BoardVO2;
+import com.liz.vo.BoardVO;
 
 public class BoardDAO {
 
@@ -22,8 +22,8 @@ public class BoardDAO {
 	}
 
 	//게시판 목록
-	public ArrayList<BoardVO2> boardList() {
-		ArrayList<BoardVO2> boardLists= (ArrayList)sqlSession.selectList("list");
+	public ArrayList<BoardVO> boardList() {
+		ArrayList<BoardVO> boardLists= (ArrayList)sqlSession.selectList("list");
 		
 		if(sqlSession != null) sqlSession.close();
 		

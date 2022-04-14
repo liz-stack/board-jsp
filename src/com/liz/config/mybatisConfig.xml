@@ -23,7 +23,7 @@
 	
 	<!--  쿼리문이 들어가 있는 xml 파일 목록 -->
 	<mappers> 
-		<mapper resource="com/liz/config/boardMapper.xml" />
+		<mapper resource="com/liz/mapper/BoardMapper.xml" />
 	</mappers>
 	
 </configuration>
