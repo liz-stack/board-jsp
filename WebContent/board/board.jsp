@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ include file="../../layout/header.jsp"%>
+<%@include file="../layout/header.jsp"%>
 
 <%@page import="com.liz.vo.BoardVO"%>
 <%@page import="com.liz.dao.BoardDAO"%>
@@ -10,6 +8,7 @@
 <%@page import="com.mysql.cj.protocol.Resultset"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 BoardDAO dao = new BoardDAO();
 
@@ -21,6 +20,7 @@ ArrayList<BoardVO> boardList = dao.boardList();
 	<br />
 	<h2>게시판 - 목록</h2>
 	<br />
+
 
 
 	<div class="input-group mb-3 form-row">
@@ -97,4 +97,7 @@ ArrayList<BoardVO> boardList = dao.boardList();
 	</nav>
 
 </div>
-<%@ include file="../../layout/footer.jsp"%>
+
+<%@include file="layout/footer.jsp"%>
+	</body>
+	</html>
