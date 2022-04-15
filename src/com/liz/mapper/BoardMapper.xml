@@ -17,7 +17,7 @@
 	</resultMap>
 
 	<!-- 게시판 목록 -->
-	<select id="boardLists" resultMap="boardList">
+	<select id="list" resultMap="boardList">
 		select category, user_name, title, content, view_count, create_date, modify_date from
 		board order by board_no desc;
 	</select>
@@ -27,6 +27,8 @@
 		UPDATE board SET view_count = view_count + #{amount} WHERE board_no =
 		#{board_no}
 	</update>
+	
+	
 
 
 </mapper>

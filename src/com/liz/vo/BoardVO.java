@@ -1,5 +1,6 @@
 package com.liz.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -22,5 +23,9 @@ public class BoardVO {
 	private String content;
 	private Date createDate;
 	private Date modifyDate;
+	private int viewCount;
+	
+	private ArrayList<BoardVO> boardList;
+
 	
 }

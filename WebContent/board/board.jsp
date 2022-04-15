@@ -7,6 +7,12 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	BoardDAO dao = new BoardDAO();
+	
+	ArrayList<BoardVO> boardList = dao.boardList();
+
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,33 +29,7 @@
 <title>게시판 목록</title>
 </head>
 <body>
-	<%-- <%
-	//list.jsp에서 선택한 링크를 통해 get 방식으로 전송 되어온 파라미터 값
 	
-	
-	BoardDAO dao = new BoardDAO();
-	BoardVO vo = new BoardVO();
-	ArrayList<BoardVO> boardList = dao.boardList();
-
-
-	for (int i = 0; i < boardList.size(); i++) {
-		BoardVO board = boardList.get(i);
-		int boardNo = board.getBoardNo();
-		String category = board.getCategory();
-		String userName = board.getUserName();
-		String title = board.getTitle();
-		String content = board.getContent();
-		Date createDate = board.getCreateDate();
-		Date modifyDate = board.getModifyDate();
-
-		/* out.println(category);
-		out.println(userName);
-		out.println(title);
-		out.println(content);
-		out.println(createDate);
-		out.println(modifyDate); */
-	}
-	%> --%>
 	<div class="container mt-3">
 		<br />
 		<h2>게시판 - 목록</h2>
@@ -91,16 +71,22 @@
 					<th>등록 일시</th>
 					<th>수정 일시</th>
 				</tr>
+				<%
+				for (BoardVO b : boardList) {
+				%>
 			</thead>
 			<tbody id="myTable">
 				<tr>
-					<td>${boardList.getCategory}</td>
-					<td>${boardList.getTitle}</td>
-					<td>${boardList.getUserName}</td>
-					<td>${boardList.getViewCount}</td>
-					<td>${boardList.getCreateDate}</td>
-					<td>${boardList.getModifyDate}</td>
+					<td><%=b.getCategory() %></td>
+					<td><%=b.getTitle() %></td>
+					<td><%=b.getUserName() %></td>
+					<td><%=b.getViewCount() %></td>
+					<td><%=b.getCreateDate() %></td>
+					<td><%=b.getModifyDate() %></td>
 				</tr>
+				<%
+				}
+				%>
 			</tbody>
 		</table>
 

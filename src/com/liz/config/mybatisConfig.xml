@@ -4,6 +4,10 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!-- <typeAliases>
+	<typeAlias alias="Board" type="com.liz.vo.BoardVO" />
+</typeAliases> -->
+
 <configuration>
 	 <environments default="development">
         <environment id="development">
@@ -17,9 +21,7 @@
         </environment>
     </environments>
 	
-	<!-- <typeAliases>
-		<typeAlias alias="Board" type="com.liz.vo.BoardVO"/>
-	</typeAliases> -->
+	
 	
 	<!--  쿼리문이 들어가 있는 xml 파일 목록 -->
 	<mappers> 

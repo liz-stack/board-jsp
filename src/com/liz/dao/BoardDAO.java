@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,25 +22,53 @@ public class BoardDAO {
 
 	private SqlSession sqlSession;
 
-	public BoardDAO() throws IOException {
+	public BoardDAO() {
 		String resource = "com/liz/config/mybatisConfig.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		SqlSession session = sqlSessionFactory.openSession();
+		InputStream inputStream = null;
 
-	}
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
-	// 게시판 목록
-	@Test
-	public List<BoardVO> boardList() {
-		try {	
-			List<BoardVO> boardLists = (ArrayList) sqlSession.selectList("boardList");
-			log.error(boardLists);
-		} catch (Exception e) {
+			sqlSession = sqlSessionFactory.openSession(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if (inputStream != null)
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+				}
+			
+
 		}
-		return boardList();
 	}
+
+	public ArrayList<BoardVO> boardList() {
+		ArrayList<BoardVO> boardList = (ArrayList) sqlSession.selectList("list");
+		log.error(boardList);
+		if (sqlSession != null)
+			sqlSession.close();
+
+		return boardList;
+	}
+
+	/*
+	 * public BoardDAO() throws IOException { String resource =
+	 * "com/liz/config/mybatisConfig.xml"; InputStream inputStream =
+	 * Resources.getResourceAsStream(resource); SqlSessionFactory sqlSessionFactory
+	 * = new SqlSessionFactoryBuilder().build(inputStream); SqlSession session =
+	 * sqlSessionFactory.openSession();
+	 * 
+	 * }
+	 * 
+	 * // 게시판 목록
+	 * 
+	 * @Test public List<BoardVO> boardList() { try { List<BoardVO> boardLists =
+	 * (ArrayList) sqlSession.selectList("boardList"); log.error(boardLists); }
+	 * catch (Exception e) { e.printStackTrace(); } return boardList(); }
+	 */
 
 	/*
 	 * while(rs.next()) { //int boardNo = rs.getInt("boardNo"); String category =
