@@ -3,10 +3,30 @@
 
 <mapper namespace="BoardMapper">
 
-	<select id="findByBoardNo" resultType="com.liz.vo.BoardVO">
-		select * from board where board_no =1;
+	<!-- DB에서의 컬럼 값이랑 DTO 객체의 필드명이 다를땐 resultMap을 사용하여 매핑시켜준다. -->
+	<resultMap id="boardList" type="com.liz.vo.BoardVO">
+		<result column="board_no" property="boardNo" />
+		<result column="category" property="category"></result>
+		<result column="user_name" property="userName"></result>
+		<result column="user_no" property="userNo"></result>
+		<result column="password" property="password"></result>
+		<result column="title" property="title"></result>
+		<result column="content" property="content"></result>
+		<result column="create_date" property="createDate"></result>
+		<result column="modify_date" property="modifyDate"></result>
+	</resultMap>
+
+	<!-- 게시판 목록 -->
+	<select id="boardLists" resultMap="boardList">
+		select category, user_name, title, content, view_count, create_date, modify_date from
+		board order by board_no desc;
 	</select>
-	
-	
+
+	<!-- 조회수 증가 -->
+	<update id="updateViewCount">
+		UPDATE board SET view_count = view_count + #{amount} WHERE board_no =
+		#{board_no}
+	</update>
+
 
 </mapper>

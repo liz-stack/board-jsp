@@ -11,25 +11,26 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" type="application/js">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!-- datetimepicker 스타일 적용 -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.datetimepicker.min.css">
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.datetimepicker.full.min.js"></script>
 <!-- jQuery import -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>게시판 목록</title>
 </head>
 <body>
 	<%-- <%
+	//list.jsp에서 선택한 링크를 통해 get 방식으로 전송 되어온 파라미터 값
+	
+	
 	BoardDAO dao = new BoardDAO();
 	BoardVO vo = new BoardVO();
 	ArrayList<BoardVO> boardList = dao.boardList();
+
 
 	for (int i = 0; i < boardList.size(); i++) {
 		BoardVO board = boardList.get(i);
@@ -41,12 +42,12 @@
 		Date createDate = board.getCreateDate();
 		Date modifyDate = board.getModifyDate();
 
-		out.println(category);
+		/* out.println(category);
 		out.println(userName);
 		out.println(title);
 		out.println(content);
 		out.println(createDate);
-		out.println(modifyDate);
+		out.println(modifyDate); */
 	}
 	%> --%>
 	<div class="container mt-3">
@@ -57,7 +58,7 @@
 
 
 		<div class="input-group mb-3 form-row">
-			<div id=searchGroup>
+			<div>
 				<span class="이미지아이콘넣을곳"></span> <input type="text" id="startDate" class="form-control" autocomplete="off" value="시작일">
 			</div>
 			<div>
@@ -76,11 +77,11 @@
 			<button type="submit" class="btn btn-primary">검색</button>
 
 		</div>
+		<br />
 
 
 
-
-		<table class="table table-bordered">
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>카테고리</th>
@@ -102,6 +103,26 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<!-- 페이징  -->
+		<nav aria-label="Page navigation example">
+			<ul class="pagination" style="justify-content: center">
+				<li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
+				</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a class="page-link" href="#">6</a></li>
+				<li class="page-item"><a class="page-link" href="#">7</a></li>
+				<li class="page-item"><a class="page-link" href="#">8</a></li>
+				<li class="page-item"><a class="page-link" href="#">9</a></li>
+				<li class="page-item"><a class="page-link" href="#">10</a></li>
+				<li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
+				</a></li>
+			</ul>
+		</nav>
 
 
 	</div>
